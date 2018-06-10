@@ -13,7 +13,7 @@ class GameOver {
     if (keyPressed) {
       if (key=='t') {
         String text = "【Growth Ball ver1.00】%0aScore: " + score + "%0a";
-        link("https://twitter.com/intent/tweet?url=https://arkark.github.io/GrowthBall"+"&text="+text+"&hashtags=traP3jam", "_blank");
+        link("https://twitter.com/intent/tweet?url=https://arkark.github.io/traP3jam/2017/0611"+"&text="+text+"&hashtags=traP3jam", "_blank");
       }
     }
     count++;

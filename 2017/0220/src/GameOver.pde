@@ -11,7 +11,7 @@ class GameOver {
     if (keyPressed) {
       if (key=='t') {
         String text = "【Rotation Cross】Game Clear！！%0a" + "すごーい！きみはパズルが得意なフレンズなんだね！" + "%0a";
-        link("https://twitter.com/intent/tweet?url=https://arkark.github.io/RotationCross/"+"&text="+text+"&hashtags=traP3jam", "_blank");
+        link("https://twitter.com/intent/tweet?url=https://arkark.github.io/traP3jam/2017/0220/"+"&text="+text+"&hashtags=traP3jam", "_blank");
       }
     }
   }

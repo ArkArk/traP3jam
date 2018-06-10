@@ -13,7 +13,7 @@ class GameOver {
     if (keyPressed) {
       if (key=='t') {
         String text = "【Oscillating Circle ver1.00】%0aScore: " + nf(floor(score/10f), 1) + "." + nf(floor(score%10), 1) + "%25" + "%0a";
-        link("https://twitter.com/intent/tweet?url=https://arkark.github.io/OscillatingCircle"+"&text="+text+"&hashtags=traP3jam", "_blank");
+        link("https://twitter.com/intent/tweet?url=https://arkark.github.io/traP3jam/2017/0828"+"&text="+text+"&hashtags=traP3jam", "_blank");
       }
     }
     count++;

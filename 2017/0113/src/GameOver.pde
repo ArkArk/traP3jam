@@ -13,7 +13,7 @@ class GameOver {
     if (keyPressed) {
       if (key=='t') {
         String text = "【Just Shot】%0aScore: "+score+", Playtime: "+playtime+"%0a";
-        link("https://twitter.com/intent/tweet?url=https://arkark.github.io/JustShot/"+"&text="+text+"&hashtags=traP3jam", "_new");
+        link("https://twitter.com/intent/tweet?url=https://arkark.github.io/traP3jam/2017/0113/"+"&text="+text+"&hashtags=traP3jam", "_new");
       }
     }
   }
