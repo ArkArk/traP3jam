@@ -14,7 +14,7 @@ class GameOver {
     if (keyPressed) {
       if (key=='t') {
         String text = "【Burning D-man and Gopher ver2.00】%0aScore: " + stageIndex + "%0a";
-        link("https://twitter.com/intent/tweet?url=https://arkark.github.io/BurningDmanAndGopher"+"&text="+text+"&hashtags=traP3jam", "_blank");
+        link("https://twitter.com/intent/tweet?url=https://arkark.github.io/traP3jam/2017/0321"+"&text="+text+"&hashtags=traP3jam", "_blank");
       }
     }
     count++;
