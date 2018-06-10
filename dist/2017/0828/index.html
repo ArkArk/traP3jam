@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="./images/dman.ico" type="image/vnd.microsoft.icon">
+    <title>Oscillating Circle</title>
+    <script src="./processing.min.js"></script>
+</head>
+<body>
+    <h1>Oscillating Circle</h1>
+    <p>このゲームは、traP内で行われた3時間gamejamで制作したものです。<br>テーマ「振動」<br>Twitterタグ <a href="https://twitter.com/search?f=tweets&q=%23traP3jam&src=typd">#traP3jam</a></p>
+
+    <h2>遊び方</h2>
+    <p>円をうまく重ねよう！（察して）</p>
+    <h2>操作方法</h2>
+    <ul>
+        <li>マウスドラッグ ... 円を動かす</li>
+    </ul>
+    <p>※画面をクリックするとゲームがスタートするよ。<br>※スマートフォンには対応していないのでPCで遊んでね。</p>
+    <hr>
+    <canvas id="mySketch" data-processing-sources="
+        src/src.pde
+        src/GameOver.pde
+        src/Particle.pde
+        src/Stage.pde
+        src/StageManager.pde
+        src/Player.pde
+    "></canvas>
+    <br>ちなみにParticleはすべて単"振動"してます。
+    <hr>
+    <div>
+        <p>更新履歴</p>
+        <ul>
+            <li>2017/8/28 ... 公開(ver1.00)</li>
+        </ul>
+        <hr>
+        <a href="http://arkark.github.io/">戻る</a>
+    </div>
+</body>
+</html>

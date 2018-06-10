@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="./images/dman.ico" type="image/vnd.microsoft.icon">
+    <title>Spread Circle</title>
+    <script src="./processing.min.js"></script>
+</head>
+<body>
+    <h1>Spread Circle</h1>
+    <p>このゲームは、traP内で行われた3時間gamejamで制作したものです。</p>
+    <p>ハッカソンテーマ「うつる」</p>
+    <p>ハッシュタグ <a href="https://twitter.com/search?f=tweets&q=%23traP3jam&src=typd">#traP3jam</a></p>
+
+    <h2>遊び方</h2>
+    <p>黄色い円に当たるとプレイヤーの回転軸がその円に移るよ！</p>
+    <p>壁に当たるとゲームオーバーなので、できる限り長く生き残ろう！</p>
+    <p>画面をクリックすると、ゲームスタートです。</p>
+    <p>リトライはページを更新してください</p>
+    <h2>操作方法</h2>
+    <ul>
+        <li>矢印キー（左右） ... 回転</li>
+        <li>tキー ... GameOver画面で押すとツイート</li>
+    </ul>
+    <p>※スマートフォンには対応していないのでPCでお遊びください。</p>
+    <hr>
+    <canvas id="mySketch" data-processing-sources="
+        src/SpreadCircle.pde
+        src/Player.pde
+        src/SideMenu.pde
+        src/StageManager.pde
+        src/GameOver.pde
+        src/Point.pde
+        src/Path.pde
+    "></canvas>
+    <hr>
+    <div>
+        <p>更新履歴</p>
+        <ul>
+            <li>2017/2/13 ... 公開</li>
+        </ul>
+        <hr>
+        <a href="http://arkark.github.io/">戻る</a>
+    </div>
+</body>
+</html>

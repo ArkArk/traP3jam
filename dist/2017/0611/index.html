@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="./images/dman.ico" type="image/vnd.microsoft.icon">
+    <title>Growth Ball</title>
+    <script src="./processing.min.js"></script>
+</head>
+<body>
+    <h1>Growth Ball</h1>
+    <p>このゲームは、traP内で行われた3時間gamejamで制作したものです。<br>テーマ「成長」<br>Twitterタグ <a href="https://twitter.com/search?f=tweets&q=%23traP3jam&src=typd">#traP3jam</a></p>
+
+    <h2>遊び方</h2>
+    <p>Ballを巧みに成長させて敵から避けよう！</p>
+    <h2>操作方法</h2>
+    <ul>
+        <li>スペースキーを押している間 ... 地面との接触点が成長</li>
+        <li>スペースキーを押していない間 ... 地面との接触点以外が成長</li>
+    </ul>
+    <p>※画面をクリックするとゲームがスタートするよ。<br>※スマートフォンには対応していないのでPCで遊んでね。</p>
+    <hr>
+    <canvas id="mySketch" data-processing-sources="
+        src/Particle.pde
+        src/Player.pde
+        src/Enemy.pde
+        src/GameOver.pde
+        src/Stage.pde
+        src/StageManager.pde
+        src/src.pde
+    "></canvas>
+    <hr>
+    <div>
+        <p>更新履歴</p>
+        <ul>
+            <li>2017/6/12 ... 公開(ver1.00)</li>
+        </ul>
+        <hr>
+        <a href="http://arkark.github.io/">戻る</a>
+    </div>
+</body>
+</html>
