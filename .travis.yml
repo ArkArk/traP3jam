@@ -4,7 +4,6 @@ node_js:
   - "9"
   - "10"
 script:
-  - mkdir dist
   - mkdir dist/2017
   - cp -r game/2017/0113 dist/2017/0113
   - cp -r game/2017/0213 dist/2017/0213
