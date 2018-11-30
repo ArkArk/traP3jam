@@ -6,16 +6,18 @@ class GameOver {
   float w = WINDOW_WIDTH;
   float h = WINDOW_HEIGHT;
 
-  int score;
-  int playtime;
+  int stageIndex;
+
+  int count = 0;
 
   void step() {
     if (keyPressed) {
       if (key=='t') {
-        String text = "【Just Shot】%0aScore: "+score+", Playtime: "+playtime+"%0a";
-        link("https://twitter.com/intent/tweet?url=https://arkark.github.io/traP3jam/2017/0113/"+"&text="+text+"&hashtags=traP3jam", "_new");
+        String text = "【Burning D-man and Gopher ver2.00】%0aScore: " + stageIndex + "%0a";
+        link("https://twitter.com/intent/tweet?url=https://arkark.github.io/traP3jam/2017/0321"+"&text="+text+"&hashtags=traP3jam", "_blank");
       }
     }
+    count++;
   }
 
   void draw() {
@@ -24,52 +26,34 @@ class GameOver {
     fill(0, 0, 0, 150);
     rect(x, y, w, h);
 
-    // score
+    // Game Over
     {
       textAlign(LEFT);
-      textSize(40);
+      textSize(50);
       fill(255);
-      text("score: ", 100f, 100f);
-
-      textAlign(LEFT);
-      textSize(40);
-      fill(255);
-
-      String str = nf(score);
-      float textW = textWidth(str);
-      text(str, x-textW/2f, 150f);
+      String str = "Game Over";
+      float w = textWidth(str);
+      text(str, (WINDOW_WIDTH-w)/2, height*0.3);
     }
 
-    // playtime
-
+    // Score
     {
       textAlign(LEFT);
       textSize(40);
       fill(255);
-      text("playtime: ", 100f, 200f);
-
-      textAlign(LEFT);
-      textSize(40);
-      fill(255);
-
-      String str = nf(playtime);
-      float textW = textWidth(str);
-      text(str, x-textW/2f, 250f);
+      String str = "Score: " + (stageIndex==0 ? "0" : nf(stageIndex));
+      float w = textWidth(str);
+      text(str, (WINDOW_WIDTH-w)/2, height*0.6);
     }
 
-    // tweet message
+    // tweet
     {
-
       textAlign(LEFT);
       textSize(30);
       fill(255);
-
-      String str1 = "Press t :";
-      String str2 = "Tweet Result";
-      float textW = textWidth(str2);
-      text(str1, 100f, 400f);
-      text(str2, x-textW/2f, 440f);
-
+      String str = "Press t: Tweet Result";
+      float w = textWidth(str);
+      text(str, (WINDOW_WIDTH-w)/2, height*0.8);
     }
   }
 

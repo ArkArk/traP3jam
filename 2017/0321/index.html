@@ -3,45 +3,41 @@
 <head>
     <meta charset="utf-8">
     <link rel="shortcut icon" href="./images/dman.ico" type="image/vnd.microsoft.icon">
-    <title>Just Shot</title>
+    <title>Burning D-man and Gopher</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.6/processing.min.js"></script>
 </head>
 <body>
-    <h1>Just Shot</h1>
-    <p>このゲームは、traP内で行われた3時間gamejamで制作したものです。</p>
-    <p>ハッカソンテーマ「限界」</p>
-    <p>ハッシュタグ <a href="https://twitter.com/search?f=tweets&q=%23traP3jam&src=typd">#traP3jam</a></p>
+    <h1>Burning D-man and Gopher</h1>
+    <p>このゲームは、traP内で行われた3時間gamejamで制作したものです。<br>テーマ「着火と鎮火」<br>今回も時間内に間に合わなかった(-_-;)（3時間 + 1時間）<br>Twitterタグ <a href="https://twitter.com/search?f=tweets&q=%23traP3jam&src=typd">#traP3jam</a></p>
 
     <h2>遊び方</h2>
-    <p>限界までひきつけて敵を倒せ！</p>
-    <p>単純シューティングゲーム。</p>
-    <p>自陣まで敵がやってくるとダメージを受けるよ！</p>
-    <p>画面をクリックするとゲームがスタートするよ。</p>
+    <p>すべてのGopherくんを燃やし尽くそう！<br>Gopherくんを燃やし残ったり、誤ってD言語くんを燃やしてしまったらGameOver。<br>制限時間内に着火と鎮火をするべき爆弾を見極めよう！<br>画面をクリックするとゲームがスタートするよ。</p>
     <h2>操作方法</h2>
     <ul>
-        <li>マウス ... 自機の移動</li>
-        <li>スペースキー ... ショット</li>
+        <li>爆弾を左クリック ... 爆弾を着火</li>
+        <li>爆弾を右クリック ... 爆弾を鎮火</li>
+        <li>GameOver画面でtボタン ... ツイート</li>
+        <li>GameOver画面でEnterキー ... リスタート</li>
     </ul>
+    <p>※画面をクリックするとゲームがスタートするよ。</p>
     <p>※スマートフォンには対応していないのでPCでお遊びください。</p>
     <hr>
     <canvas id="mySketch" data-processing-sources="
-        src/JustShot.pde
-        src/Background.pde
-        src/BorderLine.pde
-        src/Bullet.pde
-        src/Enemy.pde
-        src/EnemyManager.pde
-        src/GameOver.pde
-        src/Player.pde
+        src/app.pde
         src/SideMenu.pde
+        src/Stage.pde
         src/StageManager.pde
+        src/StageGenerator.pde
+        src/Tile.pde
+        src/GameOver.pde
+        src/Timer.pde
     "></canvas>
     <hr>
     <div>
         <p>更新履歴</p>
         <ul>
-            <li>2017/1/13 ... 公開</li>
-            <li>2017/1/16 ... ツイート機能の追加</li>
+            <li>2017/3/21 ... 公開(ver1.00)</li>
+            <li>2017/3/25 ... 完成版を公開(ver2.00)</li>
         </ul>
         <hr>
         <a href="http://arkark.github.io/">戻る</a>

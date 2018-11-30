@@ -12,8 +12,8 @@ class GameOver {
   void step() {
     if (keyPressed) {
       if (key=='t') {
-        String text = "【Just Shot】%0aScore: "+score+", Playtime: "+playtime+"%0a";
-        link("https://twitter.com/intent/tweet?url=https://arkark.github.io/traP3jam/2017/0113/"+"&text="+text+"&hashtags=traP3jam", "_new");
+        String text = "【Spread Circle】%0aScore: "+score+", Playtime: "+playtime+"%0a";
+        link("https://twitter.com/intent/tweet?url=https://arkark.github.io/traP3jam/2017/0213/"+"&text="+text+"&hashtags=traP3jam", "_blank");
       }
     }
   }
@@ -64,7 +64,7 @@ class GameOver {
       textSize(30);
       fill(255);
 
-      String str1 = "Press t :";
+      String str1 = "Press \"t\" :";
       String str2 = "Tweet Result";
       float textW = textWidth(str2);
       text(str1, 100f, 400f);

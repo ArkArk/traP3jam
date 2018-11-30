@@ -1,34 +1,31 @@
 
 class Background {
   
-  float x;
-  float y;
-  float w;
-  float h;
+  float oneHeight = 80;
   
-  float[] yAry;
-  
-  Background(float[] yAry) {
-    x = STAGE_WIDTH/2f;
-    y = STAGE_HEIGHT/2f;
-    w = STAGE_WIDTH;
-    h = STAGE_HEIGHT;
-    this.yAry = yAry;
+  Background() {
+    
   }
   
   void step() {
     
   }
   
-  void draw() {
-    stroke(10, 10, 10);
-    fill(0, 0, 0);
-    rect(x, y, w, h);
-    for(int i=1; i<yAry.length; i++) {
-      float r = i/(float)yAry.length;
-      stroke(50*r, 100*r, 130*r);
-      fill(50*r, 100*r, 130*r);
-      rect(x, (yAry[i]+yAry[i-1])/2f, w, yAry[i]-yAry[i-1]);
+  void draw(float left, float top) {
+    noStroke();
+    
+    int num = 4;
+    float x = STAGE_WIDTH / 2f;
+    float y = ((int) (top / oneHeight))*oneHeight - 1*oneHeight + oneHeight/2f;
+    float w = STAGE_WIDTH;
+    float h = oneHeight;
+    int i = ((int) (top / oneHeight)) % num;
+    while(y - top < STAGE_HEIGHT + 2*oneHeight) {
+      float r = (i+1) / (float) num;
+      fill(10 + 10 * r, 15 + 10 * r, 30 + 20 * r);
+      rect(x-left, y-top, w, h);
+      y += oneHeight;
+      i = (i+1) % num;
     }
   }
 }

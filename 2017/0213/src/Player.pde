@@ -1,70 +1,100 @@
 
 class Player {
   
-  float x;
-  float y;
-  float r = 10;
-  int hp;
+  float centerX;
+  float centerY;
+  float r = 0;
+  float theta = 90;
   
-  private Bullet[] bulletArray = new Bullet[BULLET_MAX_NUM];
-  private int bulletIndex = 0;
+  float radius = 10f;
   
-  private int BULLET_DURATION = 10;
-  private int bulletTimeCount = 0;
+  float getX() {
+    return centerX + r*cos(radians(theta));
+  }
+  float getY() {
+    return centerY + r*sin(radians(theta));
+  }
+  
+  boolean isDead = false;
+  
+  Path path;
+  Point[] pointAry;
   
   private boolean isActive = true;
   
-  Player(float x, float y) {
-    this.x = x;
-    this.y = y+r;
-    this.hp = PLAYER_HP;
-    for(int i=0; i<bulletArray.length; i++) {
-      bulletArray[i] = new Bullet();
-    }
+  Player(float x, float y, Point[] pointAry, Path path) {
+    this.centerX = x;
+    this.centerY = y;
+    this.pointAry = pointAry;
+    this.path = path;
   }
   
-  void step() {
-    input();
-    
-    for(int i=0; i<bulletArray.length; i++) {
-      Bullet bullet = bulletArray[i];
-      if (bullet.isActive) bullet.step();
-    }
-    
-    if (x+r>STAGE_WIDTH) {
-      x = STAGE_WIDTH-r;
-    }
-    if (x-r<0) {
-      x = r;
-    }
-    bulletTimeCount++;
-  }
-  
-  void input() {
+  void step(int playtime) {
     if (isActive) {
-      if (keyPressed && key == ' ' && bulletTimeCount>=BULLET_DURATION) {
-        addBullet();
-      }
-      if (mousePressed) {
-        x = mouseX;
-      }
+      float speed = pow(playtime/100f + 1, 0.2f);
+      if (leftPressed)  theta += 2f*speed;
+      if (rightPressed) theta -= 2f*speed;
+      r += 0.5f*speed;
+      
+      checkCollide();
     }
-  }
-  
-  void addBullet() {
-    bulletArray[bulletIndex].set(this.x, this.y-5);
-    bulletIndex = (bulletIndex+1)%bulletArray.length;
-    bulletTimeCount = 0;
   }
   
   void draw() {
-    stroke(100, 230, 150);
-    fill(110, 210, 130);
-    ellipse(x, y, 2*r, 2*r);
     
-    for(int i=0; i<bulletArray.length; i++) {
-      Bullet bullet = bulletArray[i];
-      if (bullet.isActive) bullet.draw();
+    // line
+    
+    strokeWeight(5f);
+    stroke(100, 230, 150, 100);
+    fill(110, 210, 130, 100);
+    line(centerX, centerY, getX(), getY());
+    
+    if (!path.isActive) {
+      // center
+      strokeWeight(3f);
+      stroke(100, 230, 150, 150);
+      fill(110, 210, 130, 150);
+      ellipse(centerX, centerY, 10, 10);
     }
+    
+    
+    // player
+    strokeWeight(3f);
+    stroke(150, 230, 200);
+    fill(110, 210, 130);
+    float x = getX();
+    float y = getY();
+    ellipse(x, y, 2*radius, 2*radius);
+    
+  }
+  
+  boolean poyoFlg = false;
+  void checkCollide() {
+    float x = getX();
+    float y = getY();
+    
+    if (x-radius<0 || x+radius>STAGE_WIDTH || y-radius<0 || y+radius>STAGE_HEIGHT) {
+      isDead = true;
+      isActive = false;
+    }
+    
+    for(int i=0; i<POINT_NUM; i++) {
+      Point point = pointAry[i];
+      if (!point.isDead) {
+        float diffX = getX()-point.getX();
+        float diffY = getY()-point.getY();
+        float d = radius + point.radius;
+        if (diffX*diffX + diffY*diffY < d*d) {
+          path.set(centerX, centerY, point.getX(), point.getY(), 20);
+          centerX = point.getX();
+          centerY = point.getY();
+          r = 0f;
+          point.replace();
+          poyoFlg = true;
+          break;
+        }
+      }
+    }
+    
   }
 }

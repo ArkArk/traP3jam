@@ -3,45 +3,38 @@
 <head>
     <meta charset="utf-8">
     <link rel="shortcut icon" href="./images/dman.ico" type="image/vnd.microsoft.icon">
-    <title>Just Shot</title>
+    <title>Rotation Cross</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.6/processing.min.js"></script>
 </head>
 <body>
-    <h1>Just Shot</h1>
-    <p>このゲームは、traP内で行われた3時間gamejamで制作したものです。</p>
-    <p>ハッカソンテーマ「限界」</p>
-    <p>ハッシュタグ <a href="https://twitter.com/search?f=tweets&q=%23traP3jam&src=typd">#traP3jam</a></p>
+    <h1>Rotation Cross</h1>
+    <p>このゲームは、traP内で行われた3時間gamejamで制作したものです。<br>ハッカソンテーマ「+」<br>ハッシュタグ <a href="https://twitter.com/search?f=tweets&q=%23traP3jam&src=typd">#traP3jam</a></p>
 
     <h2>遊び方</h2>
-    <p>限界までひきつけて敵を倒せ！</p>
-    <p>単純シューティングゲーム。</p>
-    <p>自陣まで敵がやってくるとダメージを受けるよ！</p>
-    <p>画面をクリックするとゲームがスタートするよ。</p>
+    <p>回転する＋を利用して●を○に持っていこう！<br>回転できる残り回数は右下に表示されてるよ。</p>
     <h2>操作方法</h2>
     <ul>
-        <li>マウス ... 自機の移動</li>
-        <li>スペースキー ... ショット</li>
+        <li>↺マスの上で左クリック ・・・ 回転</li>
+        <li>右クリック ・・・ やり直し</li>
     </ul>
-    <p>※スマートフォンには対応していないのでPCでお遊びください。</p>
+    <p>※クリア画面で tキー を押すとツイート<br>※スマートフォンには対応していないのでPCでお遊びください。</p>
     <hr>
     <canvas id="mySketch" data-processing-sources="
-        src/JustShot.pde
-        src/Background.pde
-        src/BorderLine.pde
-        src/Bullet.pde
-        src/Enemy.pde
-        src/EnemyManager.pde
-        src/GameOver.pde
-        src/Player.pde
+        src/RotationCross.pde
         src/SideMenu.pde
+        src/Stage.pde
         src/StageManager.pde
+        src/Tile.pde
+        src/Goal.pde
+        src/GameOver.pde
     "></canvas>
     <hr>
     <div>
         <p>更新履歴</p>
         <ul>
-            <li>2017/1/13 ... 公開</li>
-            <li>2017/1/16 ... ツイート機能の追加</li>
+            <li>2017/2/20 ... 公開</li>
+            <li>2017/2/21 ... バグの解消、回数制限の追加、ステージの追加</li>
+            <li>2017/10/6 ... ステージの若干の調整</li>
         </ul>
         <hr>
         <a href="http://arkark.github.io/">戻る</a>
