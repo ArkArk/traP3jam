@@ -1,189 +1,133 @@
 
 class StageManager {
-  Stage stage;
+  
+  boolean isFinished = false;
+  
+  int score;
+  int playtime;
+  
+  float[] yAry;
+  
+  Player player;
+  BorderLine border;
   SideMenu sideMenu;
-  int stageIndex = 0;
-
-  boolean fadeFlg = false;
-  int fadeTime;
-  int fadeDuration = 10;
-
-  boolean finishFlg = false;
+  Background background;
   GameOver gameOver;
-
+  
+  EnemyManager enemyManager;
+  
   StageManager() {
-    sideMenu = new SideMenu();
+    player = new Player(STAGE_WIDTH/2, BORDER_HEIGHT);
+    border = new BorderLine();
+    sideMenu = new SideMenu(player);
+    
+    int num = 7;
+    yAry = new float[num];
+    yAry[0] = 0f;
+    float h = BORDER_HEIGHT;
+    for(int i=1; i<num; i++) {
+      h /= 2f;
+      yAry[i] = yAry[i-1]+h;
+    }
+    yAry[num-1] = BORDER_HEIGHT;
+    
+    background = new Background(yAry);
+    enemyManager = new EnemyManager();
     gameOver = new GameOver();
-    setStage();
+    score = 0;
+    playtime = 0;
   }
-
+  
   void step() {
-    if (finishFlg) {
+    if (checkFinished()) {
       gameOver.step();
+      isFinished = true;
     } else {
-      if (fadeFlg) {
-        fadeTime++;
-        if (fadeTime == fadeDuration/2) {
-          stageIndex++;
-          setStage();
-        }
-        if (fadeTime == fadeDuration) {
-          fadeFlg = false;
-          fadeTime = 0;
-        }
-      } else {
-        stage.step();
-        if (stage.checkClear()) {
-          fadeFlg = true;
-        }
+      background.step();
+      border.step();
+      player.step();
+      sideMenu.step();
+      enemyManager.step();
+      collide();
+      checkEnemy();
+      
+      if (player.hp>0)playtime++;
+    }
+    sideMenu.score = score;
+    sideMenu.playtime = playtime;
+    gameOver.score = score;
+    gameOver.playtime = playtime;
+  }
+  
+  boolean checkFinished() {
+    if (player.hp<0) return true;
+    if (player.hp>0) return false;
+    Enemy[] enemyArray = enemyManager.enemyArray;
+    for(int i=0; i<enemyArray.length; i++) {
+      Enemy enemy = enemyArray[i];
+      if(enemy.isDead && enemy.isActive) {
+        return false;
       }
     }
-
-    sideMenu.stageCount = stage.stageCount;
-    sideMenu.step();
+    return true;
   }
-
+  
   void draw() {
-    stage.draw();
-    if (fadeFlg && !finishFlg) {
-      float r = 1 - abs(fadeTime-fadeDuration/2)/float(fadeDuration/2);
-      fill(0, 255*r);
-      rect(width/2, height/2, width*1.5, height*1.5);
-    }
+    background.draw();
+    border.draw();
+    player.draw();
     sideMenu.draw();
-    if (finishFlg) gameOver.draw();
-  }
-
-  void mouseClicked() {
-    if (mouseButton == LEFT) {
-      stage.mouseClicked();
-    } else if (mouseButton == RIGHT) {
-      if (stage.checkRotating()) return;
-      setStage();
+    enemyManager.draw();
+    if (checkFinished()) {
+      gameOver.draw();
     }
   }
-
-  void setStage() {
-    int[][] stageData = new int[NUM][NUM];
-    boolean[][] goalData = new boolean[NUM][NUM];
-    int stageCount = 0;
-    boolean debugMode = false;
-
-    for(int i=0; i<NUM; i++) {
-      for(int j=0; j<NUM; j++) {
-        stageData[i][j] = 0;
-        goalData[i][j] = false;
+  
+  void collide() {
+    Enemy[] enemyArray = enemyManager.enemyArray;
+    Bullet[] bulletArray = player.bulletArray;
+    for(int i=0; i<enemyArray.length; i++) {
+      Enemy enemy = enemyArray[i];
+      if (enemy.isDead) continue;
+      
+      for(int j=0; j<bulletArray.length; j++) {
+        Bullet bullet = bulletArray[j];
+        if (!bullet.isActive) continue;
+        
+        float x = bullet.x-enemy.x;
+        float y = bullet.y-enemy.y;
+        float r = bullet.r+enemy.r;
+        if (x*x + y*y < r*r) {
+          addScore(enemy);
+          enemy.kill();
+          bullet.kill();
+        }
       }
     }
-
-    // stageIndex = -1; // debug
-
-    switch(stageIndex) {
-      case -1: {
-        // debug stage
-        stageCount = 10;
-        debugMode = true;
-      } break;
-      case 0: {
-        stageData[5][4] = 2;
-        stageData[7][4] = 1;
-        goalData[5][2] = true;
-        stageCount = 1;
-      } break;
-      case 1: {
-        stageData[7][6] = 1;
-        stageData[5][6] = 2;
-        stageData[3][4] = 2;
-        goalData[3][2] = true;
-        stageCount = 2;
-      } break;
-      case 2: {
-        stageData[2][4] = 1;
-        stageData[6][4] = 2;
-        stageData[6][6] = 2;
-        goalData[4][6] = true;
-        stageCount = 3;
-      } break;
-      case 3: {
-        stageData[6][6] = 1;
-        stageData[4][5] = 2;
-        stageData[4][6] = 2;
-        goalData[3][5] = true;
-        stageCount = 4;
-      } break;
-      case 4: {
-        stageData[6][4] = 1;
-        stageData[4][5] = 2;
-        stageData[5][5] = 2;
-        goalData[4][6] = true;
-        stageCount = 4;
-      } break;
-      case 5: {
-        stageData[6][8] = 1;
-        stageData[4][6] = 1;
-        stageData[6][6] = 2;
-        goalData[8][6] = true;
-        goalData[6][4] = true;
-        stageCount = 2;
-      } break;
-      case 6: {
-        stageData[2][4] = 1;
-        stageData[7][5] = 1;
-        stageData[6][5] = 2;
-        stageData[4][4] = 2;
-        goalData[4][2] = true;
-        goalData[4][6] = true;
-        stageCount = 2;
-      } break;
-      case 7: {
-        stageData[3][7] = 1;
-        stageData[4][7] = 1;
-        stageData[3][5] = 2;
-        stageData[3][6] = 2;
-        stageData[4][6] = 2;
-        goalData[4][4] = true;
-        goalData[5][4] = true;
-        stageCount = 3;
-      } break;
-      case 8: {
-        stageData[1][4] = 1;
-        stageData[3][2] = 1;
-        stageData[5][2] = 2;
-        stageData[4][5] = 2;
-        stageData[5][5] = 2;
-        goalData[3][6] = true;
-        goalData[1][4] = true;
-        stageCount = 4;
-      } break;
-      case 9: {
-        stageData[4][8] = 1;
-        stageData[2][6] = 1;
-        stageData[2][4] = 2;
-        stageData[3][4] = 2;
-        stageData[3][3] = 2;
-        goalData[6][6] = true;
-        goalData[4][8] = true;
-        stageCount = 4;
-      } break;
-      case 10: {
-        stageData[5][7] = 1;
-        stageData[2][4] = 1;
-        stageData[4][5] = 2;
-        stageData[3][5] = 2;
-        stageData[3][4] = 2;
-        stageData[3][6] = 2;
-        goalData[7][5] = true;
-        goalData[3][5] = true;
-        stageCount = 4;
-      } break;
-      default: {
-        finishFlg = true;
-        return;
+  }
+  
+  void checkEnemy() {
+    Enemy[] enemyArray = enemyManager.enemyArray;
+    for(int i=0; i<enemyArray.length; i++) {
+      Enemy enemy = enemyArray[i];
+      if (enemy.isDead) continue;
+      
+      if (enemy.y > STAGE_HEIGHT) {
+        player.hp--;
+        enemy.explode();
       }
     }
-
-    stage = new Stage(stageData, goalData, stageCount, debugMode);
-    sideMenu.stageName = "No."+(stageIndex);
-    sideMenu.stageCount = stageCount;
+  }
+  
+  void addScore(Enemy enemy) {
+    int nowS = 0;
+    for(int i=1; i<yAry.length; i++) {
+      if (enemy.y<=yAry[i]+enemy.r) {
+        nowS = i*i*i*i;
+        break;
+      }
+    }
+    enemy.score = nowS;
+    score += nowS;
   }
 }
