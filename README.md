@@ -1,5 +1,7 @@
 # traP3jam
 
+[![Build Status](https://travis-ci.org/ArkArk/traP3jam.svg?branch=master)](https://travis-ci.org/ArkArk/traP3jam)
+
 traP3jam(3時間ゲームジャム)でつくったゲーム置き場
 
 ## traP3jam とは
