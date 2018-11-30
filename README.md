@@ -26,7 +26,7 @@ traP3jam(3時間ゲームジャム)でつくったゲーム置き場
 - Theme: 「振動」
 - URL: https://arkark.github.io/traP3jam/2017/0828
 
-![](./dist/2017/0828/demo.gif)
+![](game/2017/0828/demo.gif)
 
 ### Growth Ball
 
@@ -34,7 +34,7 @@ traP3jam(3時間ゲームジャム)でつくったゲーム置き場
 - Theme: 「成長」
 - URL: https://arkark.github.io/traP3jam/2017/0611
 
-![](./dist/2017/0611/demo.gif)
+![](game/2017/0611/demo.gif)
 
 ### the Fall
 
@@ -42,7 +42,7 @@ traP3jam(3時間ゲームジャム)でつくったゲーム置き場
 - Theme: 「速度」
 - URL: https://arkark.github.io/traP3jam/2017/0504
 
-![](./dist/2017/0504/demo.gif)
+![](game/2017/0504/demo.gif)
 
 ### Burning D-man and Gopher
 
@@ -50,7 +50,7 @@ traP3jam(3時間ゲームジャム)でつくったゲーム置き場
 - Theme: 「相反する2つのもの」
 - URL: https://arkark.github.io/traP3jam/2017/0321
 
-![](./dist/2017/0321/demo.gif)
+![](game/2017/0321/demo.gif)
 
 ### Rotation Cross
 
@@ -58,7 +58,7 @@ traP3jam(3時間ゲームジャム)でつくったゲーム置き場
 - Theme: 「+」
 - URL: https://arkark.github.io/traP3jam/2017/0220
 
-![](./dist/2017/0220/demo.gif)
+![](game/2017/0220/demo.gif)
 
 ### Spread Circle
 
@@ -66,7 +66,7 @@ traP3jam(3時間ゲームジャム)でつくったゲーム置き場
 - Theme: 「うつる」
 - URL: https://arkark.github.io/traP3jam/2017/0213
 
-![](./dist/2017/0213/demo.gif)
+![](game/2017/0213/demo.gif)
 
 ### Just Shot
 
@@ -74,4 +74,4 @@ traP3jam(3時間ゲームジャム)でつくったゲーム置き場
 - Theme: 「限界」
 - URL: https://arkark.github.io/traP3jam/2017/0113
 
-![](./dist/2017/0113/demo.gif)
+![](game/2017/0113/demo.gif)

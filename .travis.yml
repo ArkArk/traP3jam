@@ -4,16 +4,21 @@ node_js:
   - '9'
   - '10'
 script:
-  - ls
-  # - yarn lint
-  # - yarn build
+  - mkdir dist
+  - mkdir dist/2017
+  - cp -r game/2017/0113 dist/2017/0113
+  - cp -r game/2017/0113 dist/2017/0213
+  - cp -r game/2017/0113 dist/2017/0220
+  - cp -r game/2017/0113 dist/2017/0321
+  - cp -r game/2017/0113 dist/2017/0504
+  - cp -r game/2017/0113 dist/2017/0611
+  - cp -r game/2017/0113 dist/2017/0828
 
 deploy:
   provider: pages
   skip-cleanup: true
   local_dir: dist
   target-branch: gh-pages
-  github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
   keep-history: true
   on:
     branch: master
