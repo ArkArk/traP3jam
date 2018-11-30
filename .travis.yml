@@ -7,12 +7,12 @@ script:
   - mkdir dist
   - mkdir dist/2017
   - cp -r game/2017/0113 dist/2017/0113
-  - cp -r game/2017/0113 dist/2017/0213
-  - cp -r game/2017/0113 dist/2017/0220
-  - cp -r game/2017/0113 dist/2017/0321
-  - cp -r game/2017/0113 dist/2017/0504
-  - cp -r game/2017/0113 dist/2017/0611
-  - cp -r game/2017/0113 dist/2017/0828
+  - cp -r game/2017/0213 dist/2017/0213
+  - cp -r game/2017/0220 dist/2017/0220
+  - cp -r game/2017/0321 dist/2017/0321
+  - cp -r game/2017/0504 dist/2017/0504
+  - cp -r game/2017/0611 dist/2017/0611
+  - cp -r game/2017/0828 dist/2017/0828
 
 deploy:
   provider: pages
