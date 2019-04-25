@@ -57,7 +57,7 @@ traP3jam(3時間ゲームジャム)でつくったゲーム置き場
 ### Rotation Cross
 
 - Date: 2017/02/20
-- Theme: 「+」
+- Theme: 「:heavy_plus_sign:」
 - URL: https://arkark.github.io/traP3jam/2017/0220
 
 ![](game/2017/0220/demo.gif)
